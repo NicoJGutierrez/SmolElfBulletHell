@@ -1,13 +1,19 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://images/BorderedSquare.png" type="Texture" id=2]
 [ext_resource path="res://objects/enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/Pelota.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/Boss.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Follower.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 28.0003, 572 )
+
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 250, 145, 0, 0, 0, 0, 814, 177, 0, 0, 0, 0, 451, 280, 0, 0, 0, 0, 849, 363, 0, 0, 0, 0, 395, 556, 0, 0, 0, 0, 232, 456, 0, 0, 0, 0, 250, 145 )
+}
 
 [node name="TestScene" type="Node2D"]
 
@@ -45,4 +51,16 @@ bullet_scene = ExtResource( 3 )
 [node name="Pelota" parent="." instance=ExtResource( 4 )]
 position = Vector2( 536, 358 )
 
-[node name="Boss" parent="." instance=ExtResource( 5 )]
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 3 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 250, 145 )
+rotate = false
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Boss" parent="Path2D/PathFollow2D" instance=ExtResource( 5 )]
+rotation = 0.0128952
