@@ -27,14 +27,17 @@ func _process(delta):
 		motion.x += 1
 	if Input.is_action_pressed("left"):
 		motion.x -= 1
-	
 	motion = motion.normalized()
+	if Input.is_action_pressed("run"):
+		motion.x = 2 * motion.x
+		motion.y = 2 * motion.y
+	
 # warning-ignore:unused_variable
 	var detector_de_colisiones = move_and_slide(motion * movespeed)
 	
 	reload_time -= delta
 	if reload_time <= 0:
-		shooter.shoot_to_tree(300, 3, bullet_scene)
+		#shooter.shoot_to_tree(300, 3, bullet_scene)
 		reload_time = 1/rate_of_fire
 	
 	
