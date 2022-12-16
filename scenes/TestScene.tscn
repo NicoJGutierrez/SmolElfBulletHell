@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://images/BorderedSquare.png" type="Texture" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://objects/Pelota.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/Boss.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Follower.gd" type="Script" id=6]
+[ext_resource path="res://images/snowman portait.png" type="Texture" id=7]
+[ext_resource path="res://fonts/FuenteSnowman.tres" type="DynamicFont" id=8]
+[ext_resource path="res://scenes/DialogBox.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 28.0003, 572 )
@@ -22,6 +25,7 @@ _data = {
 [node name="TestScene" type="Node2D"]
 
 [node name="Borders" type="StaticBody2D" parent="."]
+visible = false
 
 [node name="Fondo" type="Sprite" parent="Borders"]
 modulate = Color( 0.690196, 0.419608, 0.419608, 1 )
@@ -71,3 +75,64 @@ __meta__ = {
 
 [node name="Boss" parent="Path2D/PathFollow2D" instance=ExtResource( 5 )]
 rotation = 0.0128952
+
+[node name="UI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="DialogBox" type="ColorRect" parent="UI"]
+anchor_right = 25.6
+anchor_bottom = 15.0
+margin_left = 20.0
+margin_top = 417.0
+margin_right = -20.0
+margin_bottom = -18.0001
+color = Color( 0, 0, 0, 0.537255 )
+script = ExtResource( 9 )
+dialog_path = "Texto/Dialogo1.json"
+
+[node name="Portait" type="Sprite" parent="UI/DialogBox"]
+position = Vector2( 818, -109 )
+scale = Vector2( 1.35185, 1.35185 )
+texture = ExtResource( 7 )
+
+[node name="TextBox" type="ColorRect" parent="UI/DialogBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 67.0
+margin_right = -20.0
+margin_bottom = -14.0
+color = Color( 1, 1, 1, 0.45098 )
+
+[node name="Text" type="RichTextLabel" parent="UI/DialogBox/TextBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 6.0
+margin_right = -5.0
+margin_bottom = -6.0
+custom_fonts/normal_font = ExtResource( 8 )
+text = "Eyo waddup bozo."
+
+[node name="NameBox" type="ColorRect" parent="UI/DialogBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 11.0
+margin_right = -635.0
+margin_bottom = -108.0
+color = Color( 1, 1, 1, 0.45098 )
+
+[node name="Name" type="RichTextLabel" parent="UI/DialogBox/NameBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 4.0
+margin_right = -6.0
+margin_bottom = -5.00002
+custom_fonts/normal_font = ExtResource( 8 )
+text = "Snowman"
+scroll_active = false
+
+[node name="Timer" type="Timer" parent="UI/DialogBox"]

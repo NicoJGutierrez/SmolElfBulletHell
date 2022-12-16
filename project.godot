@@ -12,7 +12,8 @@ config_version=4
 
 config/name="SmolElfGoesToHell"
 run/main_scene="res://scenes/TestScene.tscn"
-config/icon="res://images/snowman.png"
+boot_splash/image="res://images/snowman portait.png"
+config/icon="res://images/snowman portait.png"
 
 [debug]
 
