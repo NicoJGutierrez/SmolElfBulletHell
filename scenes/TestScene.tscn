@@ -25,16 +25,15 @@ _data = {
 [node name="TestScene" type="Node2D"]
 
 [node name="Borders" type="StaticBody2D" parent="."]
-visible = false
 
 [node name="Fondo" type="Sprite" parent="Borders"]
 modulate = Color( 0.690196, 0.419608, 0.419608, 1 )
-position = Vector2( 536, 328 )
-scale = Vector2( 5.03556, 3.02667 )
+position = Vector2( 536, 525.75 )
+scale = Vector2( 5.03556, 4.78445 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Borders"]
-position = Vector2( 1052, 328 )
+position = Vector2( 1052, 512 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Borders"]
@@ -43,16 +42,16 @@ rotation = -1.57079
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Borders"]
-position = Vector2( 536, 627 )
+position = Vector2( 528, 1056 )
 rotation = -1.57079
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders"]
-position = Vector2( -31, 328 )
+position = Vector2( -31, 512 )
 shape = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 159, 148 )
+position = Vector2( 176, 688 )
 rate_of_fire = 0.2
 bullet_scene = ExtResource( 3 )
 
@@ -82,11 +81,11 @@ margin_bottom = 40.0
 
 [node name="DialogBox" type="ColorRect" parent="UI"]
 anchor_right = 25.6
-anchor_bottom = 15.0
-margin_left = 20.0
-margin_top = 417.0
-margin_right = -20.0
-margin_bottom = -18.0001
+anchor_bottom = 25.6
+margin_left = 24.0
+margin_top = 832.0
+margin_right = -16.0
+margin_bottom = -27.0001
 color = Color( 0, 0, 0, 0.537255 )
 script = ExtResource( 9 )
 dialog_path = "Texto/Dialogo1.json"

@@ -19,6 +19,12 @@ config/icon="res://images/snowman portait.png"
 
 settings/fps/force_fps=40
 
+[display]
+
+window/size/height=1024
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [input]
 
 up={
