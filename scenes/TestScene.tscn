@@ -11,7 +11,7 @@
 [ext_resource path="res://scenes/DialogBox.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 28.0003, 572 )
+extents = Vector2( 31.5009, 575.5 )
 
 [sub_resource type="PhysicsMaterial" id=4]
 rough = true
@@ -28,16 +28,16 @@ _data = {
 
 [node name="Fondo" type="Sprite" parent="Borders"]
 modulate = Color( 0.690196, 0.419608, 0.419608, 1 )
-position = Vector2( 536, 525.75 )
-scale = Vector2( 5.03556, 4.78445 )
+position = Vector2( 512, 512 )
+scale = Vector2( 4.55111, 4.55111 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Borders"]
-position = Vector2( 1052, 512 )
+position = Vector2( 1055.5, 512.5 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Borders"]
-position = Vector2( 536, -28 )
+position = Vector2( 536, -32 )
 rotation = -1.57079
 shape = SubResource( 2 )
 
@@ -47,7 +47,7 @@ rotation = -1.57079
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders"]
-position = Vector2( -31, 512 )
+position = Vector2( -32, 512 )
 shape = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
