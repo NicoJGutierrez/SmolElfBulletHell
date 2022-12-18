@@ -13,4 +13,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	offset += speed * delta
+	if get_child_count() > 0:
+		offset += speed * delta

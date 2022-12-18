@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://images/icon.png" type="Texture" id=1]
 [ext_resource path="res://objects/Player.gd" type="Script" id=2]
 [ext_resource path="res://objects/Shooter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/PlayerLazer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://images/WhiteCircle.png" type="Texture" id=5]
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 8.0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -19,6 +23,15 @@ extents = Vector2( 30, 30 )
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+shape = SubResource( 4 )
+
+[node name="HurtboxSprite" type="Sprite" parent="Hurtbox"]
+modulate = Color( 0.905882, 0, 0, 1 )
+position = Vector2( 0, -2.98023e-07 )
+scale = Vector2( 0.0270727, 0.0270728 )
+texture = ExtResource( 5 )
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 
@@ -26,5 +39,7 @@ frames = SubResource( 2 )
 shape = SubResource( 3 )
 
 [node name="Shooter" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, -30 )
 
 [node name="PlayerLazer" parent="." instance=ExtResource( 4 )]
+visible = false
