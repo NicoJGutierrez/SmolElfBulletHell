@@ -20,6 +20,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
+	
 	if change_path_time <= 0:
 		change_path_time = change_path_time_limit
 		changing_path = true
@@ -47,5 +48,6 @@ func _process(delta):
 			changing_path = false
 	else:
 		change_path_time -= delta
+		children[current_path - 1].get_child(0).offset += boss.speed * delta
 
 	progress_bar.value = boss.life

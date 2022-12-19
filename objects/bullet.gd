@@ -5,7 +5,7 @@ extends RigidBody2D
 export var tiempo_de_vida = 5
 export var velocidad_inicial = 200
 export var roce = 1
-export var damage = 1
+export var damage = 0.1
 
 
 func _ready():
