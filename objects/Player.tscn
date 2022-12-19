@@ -23,10 +23,12 @@ extents = Vector2( 30, 30 )
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Hurtbox" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 4 )
 
-[node name="HurtboxSprite" type="Sprite" parent="Hurtbox"]
+[node name="HurtboxSprite" type="Sprite" parent="Area2D/Hurtbox"]
 modulate = Color( 0.905882, 0, 0, 1 )
 position = Vector2( 0, -2.98023e-07 )
 scale = Vector2( 0.0270727, 0.0270728 )

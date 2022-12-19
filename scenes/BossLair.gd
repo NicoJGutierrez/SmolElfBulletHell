@@ -6,6 +6,7 @@ var change_path_time = change_path_time_limit
 var changing_path = false
 
 onready var boss = get_node("Path1/PathFollow/Boss")
+onready var progress_bar = get_node("../UI/ProgressBar")
 onready var children = get_children()
 var current_path = 1
 var next_path = current_path + 1
@@ -38,7 +39,7 @@ func _process(delta):
 	if changing_path:
 		var objective = children[next_path - 1].get_child(0).position
 		boss.move_to(objective)
-		if boss.position.distance_to(children[next_path - 1].get_child(0).position) <= 7:
+		if boss.position.distance_to(children[next_path - 1].get_child(0).position) <= 5:
 			self.remove_child(boss)
 			children[next_path - 1].get_child(0).add_child(boss)
 			current_path = next_path
@@ -47,4 +48,4 @@ func _process(delta):
 	else:
 		change_path_time -= delta
 
-		
+	progress_bar.value = boss.life
