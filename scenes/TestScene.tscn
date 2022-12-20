@@ -97,11 +97,14 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="UI" type="Control" parent="."]
+[node name="UIHolder" type="Node2D" parent="."]
+z_index = 1
+
+[node name="UI" type="Control" parent="UIHolder"]
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="DialogBox" type="ColorRect" parent="UI"]
+[node name="DialogBox" type="ColorRect" parent="UIHolder/UI"]
 anchor_right = 25.6
 anchor_bottom = 25.6
 margin_left = 24.0
@@ -112,12 +115,12 @@ color = Color( 0, 0, 0, 0.537255 )
 script = ExtResource( 9 )
 dialog_path = "Texto/Dialogo1.json"
 
-[node name="Portait" type="Sprite" parent="UI/DialogBox"]
+[node name="Portait" type="Sprite" parent="UIHolder/UI/DialogBox"]
 position = Vector2( 818, -109 )
 scale = Vector2( 1.35185, 1.35185 )
 texture = ExtResource( 7 )
 
-[node name="TextBox" type="ColorRect" parent="UI/DialogBox"]
+[node name="TextBox" type="ColorRect" parent="UIHolder/UI/DialogBox"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0
@@ -126,7 +129,7 @@ margin_right = -20.0
 margin_bottom = -14.0
 color = Color( 1, 1, 1, 0.45098 )
 
-[node name="Text" type="RichTextLabel" parent="UI/DialogBox/TextBox"]
+[node name="Text" type="RichTextLabel" parent="UIHolder/UI/DialogBox/TextBox"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 7.0
@@ -134,9 +137,11 @@ margin_top = 6.0
 margin_right = -5.0
 margin_bottom = -6.0
 custom_fonts/normal_font = ExtResource( 8 )
+visible_characters = 0
+percent_visible = 0.0
 text = "Eyo waddup bozo."
 
-[node name="NameBox" type="ColorRect" parent="UI/DialogBox"]
+[node name="NameBox" type="ColorRect" parent="UIHolder/UI/DialogBox"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0
@@ -145,7 +150,7 @@ margin_right = -635.0
 margin_bottom = -108.0
 color = Color( 1, 1, 1, 0.45098 )
 
-[node name="Name" type="RichTextLabel" parent="UI/DialogBox/NameBox"]
+[node name="Name" type="RichTextLabel" parent="UIHolder/UI/DialogBox/NameBox"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 7.0
@@ -156,9 +161,9 @@ custom_fonts/normal_font = ExtResource( 8 )
 text = "Snowman"
 scroll_active = false
 
-[node name="Timer" type="Timer" parent="UI/DialogBox"]
+[node name="Timer" type="Timer" parent="UIHolder/UI/DialogBox"]
 
-[node name="ProgressBar" type="ProgressBar" parent="UI"]
+[node name="ProgressBar" type="ProgressBar" parent="UIHolder/UI"]
 margin_left = 24.0
 margin_top = 24.0
 margin_right = 1000.0

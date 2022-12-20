@@ -6,13 +6,13 @@ export(float) var text_speed = 0.05
 var dialog
 var phrase_num = 0
 var finished = false
-var tiempo_adicional = 2
+export var tiempo_post_chat = 2
+var tiempo_adicional = tiempo_post_chat
 
 
 func _ready():
 	$Timer.wait_time = text_speed
-	dialog = get_dialog()
-	next()
+	new_dialog(dialog_path)
 	
 func _process(delta):
 #	if Input.is_action_just_pressed("click"):
@@ -24,6 +24,8 @@ func _process(delta):
 		tiempo_adicional -= delta
 	if tiempo_adicional <= 0:
 		next()
+		tiempo_adicional = tiempo_post_chat
+		
 
 func next():
 	if phrase_num >= len(dialog):
@@ -38,7 +40,7 @@ func next():
 	#$NameBox/Name.visible = false
 	
 	
-	while $TextBox/Text.visible_characters < len($TextBox/Text.text):
+	while $TextBox/Text.visible_characters < len($TextBox/Text.bbcode_text):
 		$TextBox/Text.visible_characters += 1
 		$Timer.start()
 		yield($Timer, "timeout")
@@ -47,12 +49,12 @@ func next():
 	phrase_num += 1
 	
 	return
-	
-func get_dialog():
+
+func get_dialog(path):
 	#aquí hay un error
 	var f = File.new()
-	assert(f.file_exists(dialog_path), "No hay diálogo")
-	f.open(dialog_path, File.READ)
+	assert(f.file_exists(path), "No hay diálogo")
+	f.open(path, File.READ)
 	var json = f.get_as_text()
 	
 	var output = parse_json(json)
@@ -61,3 +63,9 @@ func get_dialog():
 		return output
 	else:
 		return []
+
+func new_dialog(path):
+	visible = true
+	phrase_num = 0
+	dialog = get_dialog(path)
+	next()

@@ -45,9 +45,9 @@ func _process(delta):
 	
 	reload_time -= delta
 	if reload_time <= 0:
-#		shooter.shoot_to_tree(2000, 3, bullet_scene, 90 + 180 - angulo, Vector2(-20,0))
-#		shooter.shoot_to_tree(2000, 3, bullet_scene, 90 + 180)
-#		shooter.shoot_to_tree(2000, 3, bullet_scene, 90 + 180 + angulo, Vector2(20, 0))
+		shooter.shoot_to_tree(2000, 3, bullet_scene, 90 + 180 - angulo, Vector2(-20,0))
+		shooter.shoot_to_tree(2000, 3, bullet_scene, 90 + 180)
+		shooter.shoot_to_tree(2000, 3, bullet_scene, 90 + 180 + angulo, Vector2(20, 0))
 		reload_time = 1/rate_of_fire
 	
 	

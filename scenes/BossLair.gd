@@ -6,10 +6,13 @@ var change_path_time = change_path_time_limit
 var changing_path = false
 
 onready var boss = get_node("Path1/PathFollow/Boss")
-onready var progress_bar = get_node("../UI/ProgressBar")
+onready var progress_bar = get_node("../UIHolder/UI/ProgressBar")
+onready var chatbox = get_node("../UIHolder/UI/DialogBox")
 onready var children = get_children()
 var current_path = 1
 var next_path = current_path + 1
+
+var boss_phase = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -51,3 +54,10 @@ func _process(delta):
 		children[current_path - 1].get_child(0).offset += boss.speed * delta
 
 	progress_bar.value = boss.life
+	if boss.life < 95 and boss_phase == 1:
+		phase_2()
+		
+
+func phase_2():
+	boss_phase = 2
+	chatbox.new_dialog("Texto/Dialogo2.json")
