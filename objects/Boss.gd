@@ -30,12 +30,15 @@ func _process(delta):
 	
 	reload_time -= delta
 	if reload_time <= 0:
-		$Shooter.shoot_to_tree(200, 6, bullet_scene, 80, Vector2(20,-20), 2)
-		$Shooter.shoot_to_tree(200, 6, bullet_scene, 90)
-		$Shooter.shoot_to_tree(200, 6, bullet_scene, 100, Vector2(-20, -20), -2)
+#		$Shooter.shoot_to_tree(200, 6, bullet_scene, 80, Vector2(20,-20))
+#		$Shooter.shoot_to_tree(200, 6, bullet_scene, 90)
+#		$Shooter.shoot_to_tree(200, 6, bullet_scene, 100, Vector2(-20, -20))
 		
 		angulo = 0
 		while angulo < 360:
+#			$Shooter.shoot_to_tree(400, 6, bullet_scene, angulo, Vector2(0,300), 2)
+#			$Shooter.shoot_to_tree(400, 6, bullet_scene, angulo, Vector2(0,300), -2)
+			
 			#$Rotator1/Shooter.shoot_to_tree(200, 6, bullet_scene, angulo)
 			#$Rotator2/Shooter.shoot_to_tree(200, 6, bullet_scene, angulo)
 			angulo += angulos_sumados

@@ -1,5 +1,11 @@
 extends Node2D
 
+export var rate_of_fire = 2.5
+var reload_time = 1/rate_of_fire
+export var hail_qtty = 5
+export(PackedScene) var bullet_scene = preload("res://objects/bullet.tscn")
+
+var angulo = 0
 
 export var change_path_time_limit = 6
 var change_path_time = change_path_time_limit
@@ -56,7 +62,24 @@ func _process(delta):
 	progress_bar.value = boss.life
 	if boss.life < 95 and boss_phase == 1:
 		phase_2()
+	if boss_phase == 2:
+		#angulo semirandom
+		if angulo >= 90:
+			angulo += delta * 45.3 - 90
+		angulo += delta * 45.3
 		
+		#disparo
+		reload_time -= delta
+		if reload_time <= 0:
+			var mini_angulo = angulo
+			for i in range(hail_qtty):
+				$Shooter.shoot_child(300, 25, bullet_scene, mini_angulo)
+				$Container2/Shooter2.shoot_child(300, 25, bullet_scene, mini_angulo + 90)
+				if mini_angulo + 90/hail_qtty >= 90:
+					mini_angulo += 90/hail_qtty - 90 
+				else:
+					mini_angulo += 90/hail_qtty
+			reload_time = 1/rate_of_fire
 
 func phase_2():
 	boss_phase = 2
