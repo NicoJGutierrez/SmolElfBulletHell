@@ -14,7 +14,7 @@ var reload_time = 1/rate_of_fire
 export var clip_size = 7
 var bullets = clip_size
 
-export var giracion = 5
+export var giracion = 8
 var angulos_sumados = 360/giracion
 var angulo = 0
 
@@ -51,8 +51,9 @@ func _process(delta):
 				bullets = -1
 				angulo = 0
 				while angulo < 360:
-					angulo += angulos_sumados/2
 					$Shooter.shoot_to_tree(200, 6, bullet_scene, angulo)
+					angulo += 360/(3*giracion)
+					print(angulo)
 			else:
 				bullets = clip_size
 		
@@ -60,8 +61,8 @@ func _process(delta):
 			angulo = 0
 			while angulo < 360:
 				angulo += angulos_sumados
-				$Shooter.shoot_child(300, 6, bullet_scene, angulo, Vector2(0,0), 0.5)
-				$Shooter.shoot_child(300, 6, bullet_scene, angulo, Vector2(0,0), -0.5)
+				$Shooter.shoot_child(300, 6, bullet_scene, angulo, Vector2(0,0), 0.35)
+				$Shooter.shoot_child(300, 6, bullet_scene, angulo, Vector2(0,0), -0.35)
 				#$Rotator1/Shooter.shoot_to_tree(200, 6, bullet_scene, angulo)
 				#$Rotator2/Shooter.shoot_to_tree(200, 6, bullet_scene, angulo)
 

@@ -23,7 +23,7 @@ func shoot_child(vel, tiempo_de_vida, objeto, angulo = 0, displacement = Vector2
 	bullet.curve = curve
 	bullet.roce = roce
 	bullet.tiempo_de_vida = tiempo_de_vida
-	get_parent().add_child(bullet)
+	add_child(bullet)
 	bullet.position += displacement
 	return bullet
 

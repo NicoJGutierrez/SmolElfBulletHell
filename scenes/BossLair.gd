@@ -6,6 +6,7 @@ export var hail_qtty = 5
 export(PackedScene) var bullet_scene = preload("res://objects/bullet.tscn")
 
 var angulo = 0
+var shapechanger = true
 
 export var change_path_time_limit = 6
 var change_path_time = change_path_time_limit
@@ -56,18 +57,27 @@ func _process(delta):
 	
 	
 	if boss.fase == 4:
-		#angulo semirandom
 		if angulo >= 90:
-			angulo += delta * 45.3 - 90
-		angulo += delta * 45.3
+			angulo += 21 - 90
+		angulo += 21
 		
 		#disparo
 		reload_time -= delta
+		
 		if reload_time <= 0:
 			var mini_angulo = angulo
+			if shapechanger:
+				shapechanger = false
+			else:
+				shapechanger = true
 			for i in range(hail_qtty):
-				$Shooter.shoot_child(300, 25, bullet_scene, mini_angulo)
-				$Container2/Shooter2.shoot_child(300, 25, bullet_scene, mini_angulo + 90)
+				if shapechanger:
+					$Shooter.shoot_child(250, 25, bullet_scene, 90 - mini_angulo)
+					$Container2/Shooter2.shoot_child(250, 25, bullet_scene, 90 + mini_angulo)
+				else:
+					$Shooter.shoot_child(250, 25, bullet_scene, mini_angulo)
+					$Container2/Shooter2.shoot_child(250, 25, bullet_scene, 180 - mini_angulo)
+				
 				if mini_angulo + 90/hail_qtty >= 90:
 					mini_angulo += 90/hail_qtty - 90 
 				else:
