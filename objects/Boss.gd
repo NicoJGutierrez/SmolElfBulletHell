@@ -16,6 +16,8 @@ export var giracion = 5
 var angulos_sumados = 360/giracion
 var angulo = 0
 
+export var fase = 1
+
 export(PackedScene) var bullet_scene = preload("res://objects/bullet.tscn")
 
 func _ready():
@@ -30,19 +32,24 @@ func _process(delta):
 	
 	reload_time -= delta
 	if reload_time <= 0:
-#		$Shooter.shoot_to_tree(200, 6, bullet_scene, 80, Vector2(20,-20))
-#		$Shooter.shoot_to_tree(200, 6, bullet_scene, 90)
-#		$Shooter.shoot_to_tree(200, 6, bullet_scene, 100, Vector2(-20, -20))
-		
-		angulo = 0
-		while angulo < 360:
-#			$Shooter.shoot_to_tree(400, 6, bullet_scene, angulo, Vector2(0,300), 2)
-#			$Shooter.shoot_to_tree(400, 6, bullet_scene, angulo, Vector2(0,300), -2)
-			
-			#$Rotator1/Shooter.shoot_to_tree(200, 6, bullet_scene, angulo)
-			#$Rotator2/Shooter.shoot_to_tree(200, 6, bullet_scene, angulo)
-			angulo += angulos_sumados
 		reload_time = 1/rate_of_fire
+		if fase == 1:
+			$Shooter.shoot_to_tree(200, 6, bullet_scene, 80, Vector2(20,-20))
+			$Shooter.shoot_to_tree(200, 6, bullet_scene, 90)
+			$Shooter.shoot_to_tree(200, 6, bullet_scene, 100, Vector2(-20, -20))
+		
+		if fase == 2:
+			pass
+		
+		if fase == 3 and not changing_path:
+			angulo = 0
+			while angulo < 360:
+				angulo += angulos_sumados
+				$Shooter.shoot_to_tree(400, 6, bullet_scene, angulo, Vector2(0,0), 1)
+				$Shooter.shoot_to_tree(400, 6, bullet_scene, angulo, Vector2(0,0), -1)
+				
+				#$Rotator1/Shooter.shoot_to_tree(200, 6, bullet_scene, angulo)
+				#$Rotator2/Shooter.shoot_to_tree(200, 6, bullet_scene, angulo)
 
 
 func move_to(objective):
@@ -53,7 +60,11 @@ func stop():
 	self.position = Vector2(0,0)
 	changing_path = false
 
-
+func toggle_snow_gun():
+	if $Rotator1/Shooter/SnowGun.visible:
+		$Rotator1/Shooter/SnowGun.hide()
+	else:
+		$Rotator1/Shooter/SnowGun.show()
 
 func _on_Hurtbox_body_entered(body):
 	life -= body.damage

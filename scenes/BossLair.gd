@@ -18,11 +18,10 @@ onready var children = get_children()
 var current_path = 1
 var next_path = current_path + 1
 
-var boss_phase = 1
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	children.remove(children.size() - 1)
+	children.remove(children.size() - 1)
 	pass # Replace with function body.
 
 
@@ -30,22 +29,10 @@ func _ready():
 func _process(delta):
 	
 	
-	if change_path_time <= 0:
-		change_path_time = change_path_time_limit
-		changing_path = true
-		
-		next_path = current_path + 1
-		if next_path > children.size():
-			next_path = 1
-		var boss_position = children[current_path - 1].get_child(0).position
-		children[current_path - 1].get_child(0).remove_child(boss)
-		self.add_child(boss)
-		boss.position = boss_position
-		
-		
-		
-		#var objective = $Path2/PathFollow.position
-		
+#	if change_path_time <= 0:
+#		change_path_time = change_path_time_limit
+#		boss_change_path()
+
 	if changing_path:
 		var objective = children[next_path - 1].get_child(0).position
 		boss.move_to(objective)
@@ -60,9 +47,15 @@ func _process(delta):
 		children[current_path - 1].get_child(0).offset += boss.speed * delta
 
 	progress_bar.value = boss.life
-	if boss.life < 95 and boss_phase == 1:
+	if boss.life < 80 and boss.fase == 1:
 		phase_2()
-	if boss_phase == 2:
+	if boss.life < 50 and boss.fase == 2:
+		phase_3()
+	if boss.life < 20 and boss.fase == 3:
+		phase_4()
+	
+	
+	if boss.fase == 4:
 		#angulo semirandom
 		if angulo >= 90:
 			angulo += delta * 45.3 - 90
@@ -81,6 +74,27 @@ func _process(delta):
 					mini_angulo += 90/hail_qtty
 			reload_time = 1/rate_of_fire
 
+func boss_change_path():
+	changing_path = true
+	next_path = current_path + 1
+	if next_path > children.size():
+		next_path = 1
+	var boss_position = children[current_path - 1].get_child(0).position
+	children[current_path - 1].get_child(0).remove_child(boss)
+	self.add_child(boss)
+	boss.position = boss_position
+
 func phase_2():
-	boss_phase = 2
+	boss_change_path()
+	boss.rate_of_fire = 4
+	boss.toggle_snow_gun()
+	boss.fase = 2
 	chatbox.new_dialog("Texto/Dialogo2.json")
+	
+func phase_3():
+	boss_change_path()
+	boss.toggle_snow_gun()
+	boss.fase = 3
+	
+func phase_4():
+	boss.fase = 4
