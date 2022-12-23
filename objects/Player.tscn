@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://images/TriniElf.png" type="Texture" id=1]
 [ext_resource path="res://objects/Player.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://objects/PlayerLazer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://images/WhiteCircle.png" type="Texture" id=5]
 [ext_resource path="res://objects/playerbullet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/playerbulletfollow.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 2.0
@@ -51,5 +52,41 @@ position = Vector2( 0, -30 )
 
 [node name="PlayerLazer" parent="." instance=ExtResource( 4 )]
 visible = false
+
+[node name="Teletrack1" type="Node2D" parent="."]
+
+[node name="WhiteCircle" type="Sprite" parent="Teletrack1"]
+modulate = Color( 1, 0, 0, 0.588235 )
+position = Vector2( -23.5, -43 )
+scale = Vector2( 0.035, 0.035 )
+texture = ExtResource( 5 )
+
+[node name="WhiteCircle2" type="Sprite" parent="Teletrack1"]
+modulate = Color( 0, 1, 0.227451, 0.588235 )
+position = Vector2( -23.5, -43 )
+scale = Vector2( 0.03, 0.03 )
+texture = ExtResource( 5 )
+
+[node name="Shooter" parent="Teletrack1" instance=ExtResource( 3 )]
+position = Vector2( -23.5, -43 )
+bullet = ExtResource( 7 )
+
+[node name="Teletrack2" type="Node2D" parent="."]
+
+[node name="WhiteCircle" type="Sprite" parent="Teletrack2"]
+modulate = Color( 1, 0, 0, 0.588235 )
+position = Vector2( 23.5, -42.658 )
+scale = Vector2( 0.035, 0.035 )
+texture = ExtResource( 5 )
+
+[node name="WhiteCircle2" type="Sprite" parent="Teletrack2"]
+modulate = Color( 0, 1, 0.227451, 0.588235 )
+position = Vector2( 23.5, -42.658 )
+scale = Vector2( 0.03, 0.03 )
+texture = ExtResource( 5 )
+
+[node name="Shooter" parent="Teletrack2" instance=ExtResource( 3 )]
+position = Vector2( 23.5, -42.658 )
+bullet = ExtResource( 7 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

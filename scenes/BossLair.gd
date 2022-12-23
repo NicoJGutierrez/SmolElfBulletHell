@@ -84,6 +84,12 @@ func _process(delta):
 					mini_angulo += 90/hail_qtty
 			reload_time = 1/rate_of_fire
 
+func boss_pos():
+	if boss.changing_path:
+		return boss.position
+	else:
+		return boss.get_parent().position
+
 func boss_change_path():
 	changing_path = true
 	next_path = current_path + 1

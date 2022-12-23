@@ -12,6 +12,8 @@ export(PackedScene) var bullet_scene = preload("res://objects/bullet.tscn")
 
 export var movespeed = 450
 
+onready var BossLair = get_node("../BossLair")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	shooter = get_node("Shooter")
@@ -45,9 +47,11 @@ func _process(delta):
 	
 	reload_time -= delta
 	if reload_time <= 0:
-		shooter.shoot_to_tree(2000, 3, bullet_scene, 90 + 180 - angulo, Vector2(-20,0))
-		shooter.shoot_to_tree(2000, 3, bullet_scene, 90 + 180)
-		shooter.shoot_to_tree(2000, 3, bullet_scene, 90 + 180 + angulo, Vector2(20, 0))
+		shooter.shoot_to_tree(1000, 3, bullet_scene, 90 + 180 - angulo, Vector2(-20,0))
+		shooter.shoot_to_tree(1000, 3, bullet_scene, 90 + 180)
+		shooter.shoot_to_tree(1000, 3, bullet_scene, 90 + 180 + angulo, Vector2(20, 0))
+		$Teletrack1/Shooter.shoot_to_tree(600, 3, bullet_scene, 0, Vector2(0, 0), 0, 0, BossLair)
+		$Teletrack2/Shooter.shoot_to_tree(600, 3, bullet_scene, 0, Vector2(0, 0), 0, 0, BossLair)
 		reload_time = 1/rate_of_fire
 	
 	
