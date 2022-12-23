@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/Shooter.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://objects/hail_bullet.tscn" type="PackedScene" id=10]
 [ext_resource path="res://images/ice_background.png" type="Texture" id=11]
 [ext_resource path="res://music_jewels.ogg" type="AudioStream" id=12]
+[ext_resource path="res://BBB.wav" type="AudioStream" id=13]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 31.5009, 575.5 )
@@ -197,6 +198,9 @@ text = "Snowman"
 scroll_active = false
 
 [node name="Timer" type="Timer" parent="UIHolder/UI/DialogBox"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UIHolder/UI/DialogBox"]
+stream = ExtResource( 13 )
 
 [node name="ProgressBar" type="ProgressBar" parent="UIHolder/UI"]
 margin_left = 24.0

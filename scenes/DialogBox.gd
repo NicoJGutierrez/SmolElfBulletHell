@@ -42,6 +42,8 @@ func next():
 	
 	while $TextBox/Text.visible_characters < len($TextBox/Text.bbcode_text):
 		$TextBox/Text.visible_characters += 1
+		if $TextBox/Text.visible_characters % 2 == 1:
+			$AudioStreamPlayer.play()
 		$Timer.start()
 		yield($Timer, "timeout")
 		
