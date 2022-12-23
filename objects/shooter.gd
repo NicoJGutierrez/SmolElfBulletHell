@@ -1,9 +1,14 @@
 extends Node2D
 
+export (PackedScene) var bullet
+
 func shoot_to_tree(vel, tiempo_de_vida, objeto, angulo = 0, displacement = Vector2(0,0), curve = 0, roce = 0):
+	if bullet != null:
+		objeto = bullet
 	var bullet = objeto.instance()
 	bullet.position = get_global_position() + displacement
 	bullet.rotation_degrees = rotation_degrees + angulo
+	print(bullet.rotation_degrees)
 	bullet.velocidad_inicial = vel
 	bullet.curve = curve
 	bullet.roce = roce

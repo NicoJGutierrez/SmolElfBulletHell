@@ -34,7 +34,7 @@ func _process(delta):
 	if Input.is_action_pressed("run"):
 		motion.x = 0.5 * motion.x
 		motion.y = 0.5 * motion.y
-		$AnimatedSprite.modulate.a = 0.6
+		$AnimatedSprite.modulate.a = 0.5
 		angulo = 0
 	else:
 		$AnimatedSprite.modulate.a = 1

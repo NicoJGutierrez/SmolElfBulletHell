@@ -7,7 +7,7 @@ var mirar_izquierda = false
 onready var player = get_node("../../../../../Player")
 
 func _process(delta):
-	$Shooter.look_at(player.position)
+	look_at(player.position)
 	if $Shooter.rotation_degrees >= 90 and $Shooter.rotation_degrees <= 90 + 180:
 		if not mirar_izquierda:
 			cambiar_mirada()

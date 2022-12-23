@@ -82,7 +82,8 @@ scale = Vector2( 1, 0.996094 )
 texture = ExtResource( 11 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 176, 688 )
+position = Vector2( 493, 691 )
+scale = Vector2( 1.5, 1.5 )
 rate_of_fire = 4.0
 
 [node name="BossLair" type="Node2D" parent="."]
@@ -91,7 +92,6 @@ rate_of_fire = 5.0
 bullet_scene = ExtResource( 10 )
 
 [node name="Path1" type="Path2D" parent="BossLair"]
-visible = false
 curve = SubResource( 3 )
 
 [node name="PathFollow" type="PathFollow2D" parent="BossLair/Path1"]
@@ -104,7 +104,7 @@ __meta__ = {
 [node name="Boss" parent="BossLair/Path1/PathFollow" instance=ExtResource( 5 )]
 rotation = 0.0128952
 speed = 200
-rate_of_fire = 2.0
+rate_of_fire = 1.0
 
 [node name="Path2" type="Path2D" parent="BossLair"]
 curve = SubResource( 4 )

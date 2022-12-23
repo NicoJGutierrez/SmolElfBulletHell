@@ -86,13 +86,14 @@ func boss_change_path():
 
 func phase_2():
 	boss_change_path()
-	boss.rate_of_fire = 4
+	boss.rate_of_fire = boss.rate_of_fire * 4
 	boss.toggle_snow_gun()
 	boss.fase = 2
 	chatbox.new_dialog("Texto/Dialogo2.json")
 	
 func phase_3():
 	boss_change_path()
+	boss.rate_of_fire = boss.rate_of_fire / 2
 	boss.toggle_snow_gun()
 	boss.fase = 3
 	
