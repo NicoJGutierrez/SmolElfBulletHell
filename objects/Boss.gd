@@ -32,6 +32,9 @@ func _process(delta):
 		var vector = (destination - self.position).normalized()
 		move_and_slide(vector * speed)
 	
+	if fase == 3:
+		$Shooter.rotate(0.5 * delta)
+	
 	reload_time -= delta
 	if reload_time <= 0:
 		reload_time = 1/rate_of_fire
@@ -57,9 +60,8 @@ func _process(delta):
 			angulo = 0
 			while angulo < 360:
 				angulo += angulos_sumados
-				$Shooter.shoot_to_tree(400, 6, bullet_scene, angulo, Vector2(0,0), 1)
-				$Shooter.shoot_to_tree(400, 6, bullet_scene, angulo, Vector2(0,0), -1)
-				
+				$Shooter.shoot_child(300, 6, bullet_scene, angulo, Vector2(0,0), 0.5)
+				$Shooter.shoot_child(300, 6, bullet_scene, angulo, Vector2(0,0), -0.5)
 				#$Rotator1/Shooter.shoot_to_tree(200, 6, bullet_scene, angulo)
 				#$Rotator2/Shooter.shoot_to_tree(200, 6, bullet_scene, angulo)
 
@@ -75,6 +77,7 @@ func stop():
 func toggle_snow_gun():
 	if $Rotator1/SnowGun.visible:
 		$Rotator1/SnowGun.hide()
+		pass
 	else:
 		$Rotator1/SnowGun.show()
 

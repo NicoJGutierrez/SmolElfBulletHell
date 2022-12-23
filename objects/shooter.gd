@@ -8,7 +8,6 @@ func shoot_to_tree(vel, tiempo_de_vida, objeto, angulo = 0, displacement = Vecto
 	var bullet = objeto.instance()
 	bullet.position = get_global_position() + displacement
 	bullet.rotation_degrees = rotation_degrees + angulo
-	print(bullet.rotation_degrees)
 	bullet.velocidad_inicial = vel
 	bullet.curve = curve
 	bullet.roce = roce
