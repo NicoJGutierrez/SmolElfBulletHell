@@ -57,7 +57,7 @@ func _process(delta):
 		phase_2()
 	if boss.life < 50 and boss.fase == 2:
 		phase_3()
-	if boss.life < 20 and boss.fase == 3:
+	if boss.life < 30 and boss.fase == 3:
 		phase_4()
 	
 	
@@ -122,7 +122,9 @@ func phase_3():
 	boss.rate_of_fire = boss.rate_of_fire / 2
 	boss.toggle_snow_gun()
 	boss.fase = 3
+	chatbox.new_dialog("Texto/Dialogo3.json")
 	
 func phase_4():
 	boss.play_phase_change()
 	boss.fase = 4
+	chatbox.new_dialog("Texto/Dialogo4.json")

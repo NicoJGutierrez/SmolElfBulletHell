@@ -141,6 +141,7 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="DialogBox" type="ColorRect" parent="UIHolder/UI"]
+pause_mode = 2
 anchor_right = 25.6
 anchor_bottom = 25.6
 margin_left = 24.0
@@ -150,6 +151,8 @@ margin_bottom = -27.0001
 color = Color( 0, 0, 0, 0.537255 )
 script = ExtResource( 9 )
 dialog_path = "Texto/Dialogo1.json"
+text_speed = 0.03
+tiempo_post_chat = 0.5
 
 [node name="Portait" type="Sprite" parent="UIHolder/UI/DialogBox"]
 position = Vector2( 818, -109 )
@@ -202,6 +205,12 @@ scroll_active = false
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UIHolder/UI/DialogBox"]
 stream = ExtResource( 13 )
 
+[node name="TextCompleteTimer" type="Timer" parent="UIHolder/UI/DialogBox"]
+
+[node name="BackgroundMusikk" type="AudioStreamPlayer" parent="UIHolder/UI/DialogBox"]
+stream = ExtResource( 12 )
+autoplay = true
+
 [node name="ProgressBar" type="ProgressBar" parent="UIHolder/UI"]
 margin_left = 24.0
 margin_top = 24.0
@@ -209,9 +218,5 @@ margin_right = 1000.0
 margin_bottom = 72.0
 theme = ExtResource( 4 )
 value = 100.0
-
-[node name="BackgroundMusikk" type="AudioStreamPlayer" parent="UIHolder"]
-stream = ExtResource( 12 )
-autoplay = true
 
 [connection signal="body_entered" from="Borders/Playfield" to="Borders/Playfield" method="_on_Playfield_body_entered"]

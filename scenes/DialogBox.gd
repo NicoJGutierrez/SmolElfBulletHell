@@ -5,13 +5,13 @@ export(float) var text_speed = 0.05
 
 var dialog
 var phrase_num = 0
-var finished = false
-export var tiempo_post_chat = 2
+export var tiempo_post_chat = 2.0
 var tiempo_adicional = tiempo_post_chat
 
 
 func _ready():
 	$Timer.wait_time = text_speed
+	$TextCompleteTimer.wait_time = tiempo_post_chat
 	new_dialog(dialog_path)
 	
 func _process(delta):
@@ -20,37 +20,34 @@ func _process(delta):
 #			next()
 #		else:
 #			$Texto.visible_characters = len($Texto.text)
-	if finished:
-		tiempo_adicional -= delta
-	if tiempo_adicional <= 0:
-		next()
-		tiempo_adicional = tiempo_post_chat
+	pass
 		
 
 func next():
-	if phrase_num >= len(dialog):
-		visible = false
-		return
-	
-	finished = false
-	$TextBox/Text.bbcode_text = dialog[phrase_num]["Texto"]
-	$NameBox/Name.bbcode_text = dialog[phrase_num]["Nombre"]
-	
-	$TextBox/Text.visible_characters = 0
-	#$NameBox/Name.visible = false
-	
-	
-	while $TextBox/Text.visible_characters < len($TextBox/Text.bbcode_text):
-		$TextBox/Text.visible_characters += 1
-		if $TextBox/Text.visible_characters % 2 == 1:
-			$AudioStreamPlayer.play()
-		$Timer.start()
-		yield($Timer, "timeout")
+	get_tree().paused = true
+	while true:
+		if phrase_num >= len(dialog):
+			visible = false
+			break
 		
-	finished = true
-	phrase_num += 1
-	
-	return
+		$TextBox/Text.bbcode_text = dialog[phrase_num]["Texto"]
+		$NameBox/Name.bbcode_text = dialog[phrase_num]["Nombre"]
+		
+		$TextBox/Text.visible_characters = 0
+		#$NameBox/Name.visible = false
+		
+		
+		while $TextBox/Text.visible_characters < len($TextBox/Text.bbcode_text):
+			$TextBox/Text.visible_characters += 1
+			if $TextBox/Text.visible_characters % 2 == 1:
+				$AudioStreamPlayer.play()
+			$Timer.start()
+			yield($Timer, "timeout")
+			
+		$TextCompleteTimer.start()
+		yield($TextCompleteTimer, "timeout")
+		phrase_num += 1
+	get_tree().paused = false
 
 func get_dialog(path):
 	#aquí hay un error
@@ -71,3 +68,4 @@ func new_dialog(path):
 	phrase_num = 0
 	dialog = get_dialog(path)
 	next()
+	
