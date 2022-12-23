@@ -19,6 +19,12 @@ onready var children = get_children()
 var current_path = 1
 var next_path = current_path + 1
 
+onready var rand = RandomNumberGenerator.new()
+onready var camera = $Camera2D
+export var max_shake_strength = 30
+export var shake_decay = 5
+var current_shake_strength = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	children.remove(children.size() - 1)
@@ -26,14 +32,13 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	
-#	if change_path_time <= 0:
-#		change_path_time = change_path_time_limit
-#		boss_change_path()
-
+	current_shake_strength = lerp(current_shake_strength, 0, shake_decay * delta)
+	camera.offset = Vector2(
+	rand.randf_range(-current_shake_strength, current_shake_strength),
+	rand.randf_range(-current_shake_strength, current_shake_strength) 
+	)
 	if changing_path:
 		var objective = children[next_path - 1].get_child(0).position
 		boss.move_to(objective)
@@ -89,6 +94,9 @@ func boss_pos():
 		return boss.position
 	else:
 		return boss.get_parent().position
+		
+func camera_shake():
+	current_shake_strength = max_shake_strength
 
 func boss_change_path():
 	changing_path = true
@@ -101,6 +109,7 @@ func boss_change_path():
 	boss.position = boss_position
 
 func phase_2():
+	boss.play_phase_change()
 	boss_change_path()
 	boss.rate_of_fire = boss.rate_of_fire * 4
 	boss.toggle_snow_gun()
@@ -108,10 +117,12 @@ func phase_2():
 	chatbox.new_dialog("Texto/Dialogo2.json")
 	
 func phase_3():
+	boss.play_phase_change()
 	boss_change_path()
 	boss.rate_of_fire = boss.rate_of_fire / 2
 	boss.toggle_snow_gun()
 	boss.fase = 3
 	
 func phase_4():
+	boss.play_phase_change()
 	boss.fase = 4

@@ -58,6 +58,7 @@ func _process(delta):
 
 
 func _on_Area2D_body_entered(body):
-	print("hit")
+	BossLair.camera_shake()
 	body.queue_free()
+	$AudioStreamPlayer.play()
 	pass # Replace with function body.

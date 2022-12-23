@@ -53,7 +53,6 @@ func _process(delta):
 				while angulo < 360:
 					$Shooter.shoot_to_tree(200, 6, bullet_scene, angulo)
 					angulo += 360/(3*giracion)
-					print(angulo)
 			else:
 				bullets = clip_size
 		
@@ -78,9 +77,11 @@ func stop():
 func toggle_snow_gun():
 	if $Rotator1/SnowGun.visible:
 		$Rotator1/SnowGun.hide()
-		pass
 	else:
 		$Rotator1/SnowGun.show()
+		
+func play_phase_change():
+	$AudioStreamPlayer.play()
 
 func _on_Hurtbox_body_entered(body):
 	life -= body.damage
