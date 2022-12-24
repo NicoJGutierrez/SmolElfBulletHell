@@ -1,6 +1,6 @@
 extends Node2D
 
-export var end_speed = 2.0
+export var end_speed = 3.5
 
 
 # Called when the node enters the scene tree for the first time.
@@ -10,8 +10,6 @@ func _ready():
 
 
 func story():
-	$Timer.start()
-	yield($Timer, "timeout")
 	$Timer.start()
 	yield($Timer, "timeout")
 	$ending1.hide()

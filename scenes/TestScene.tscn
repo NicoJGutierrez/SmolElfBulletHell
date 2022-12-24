@@ -153,8 +153,8 @@ rect_scale = Vector2( 1.00117, 1 )
 color = Color( 0.258824, 0.258824, 0.258824, 0.878431 )
 script = ExtResource( 9 )
 dialog_path = "Texto/Dialogo1.json"
-text_speed = 0.01
-tiempo_post_chat = 0.01
+text_speed = 0.04
+tiempo_post_chat = 1.5
 
 [node name="ElfPortait" type="Sprite" parent="UIHolder/UI/DialogBox"]
 visible = false
