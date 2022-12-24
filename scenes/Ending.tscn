@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://snowmantheme.tres" type="Theme" id=1]
+[ext_resource path="res://images/ending1.png" type="Texture" id=2]
+[ext_resource path="res://images/ending2.png" type="Texture" id=3]
+[ext_resource path="res://images/ending3.png" type="Texture" id=4]
+[ext_resource path="res://images/ending4.png" type="Texture" id=5]
+[ext_resource path="res://scenes/Ending.gd" type="Script" id=6]
+
+[node name="Ending" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="ending4" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+
+[node name="Control" type="Control" parent="ending4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -984.0
+margin_bottom = -984.0
+
+[node name="Button" type="Button" parent="ending4/Control"]
+anchor_left = -12.8
+anchor_top = -12.8
+anchor_right = 12.8
+anchor_bottom = 12.8
+margin_left = 342.0
+margin_top = 112.0
+margin_right = -340.0
+margin_bottom = -826.0
+theme = ExtResource( 1 )
+text = "Epic Win"
+
+[node name="ending3" type="Sprite" parent="."]
+z_index = 1
+texture = ExtResource( 4 )
+
+[node name="ending2" type="Sprite" parent="."]
+z_index = 2
+texture = ExtResource( 3 )
+
+[node name="ending1" type="Sprite" parent="."]
+z_index = 3
+texture = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="pressed" from="ending4/Control/Button" to="." method="_on_Button_pressed"]

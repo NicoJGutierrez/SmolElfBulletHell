@@ -14,14 +14,6 @@ func _ready():
 	$TextCompleteTimer.wait_time = tiempo_post_chat
 	new_dialog(dialog_path)
 	
-func _process(delta):
-#	if Input.is_action_just_pressed("click"):
-#		if finished:
-#			next()
-#		else:
-#			$Texto.visible_characters = len($Texto.text)
-	pass
-		
 
 func next():
 	get_tree().paused = true
@@ -32,6 +24,13 @@ func next():
 		
 		$TextBox/Text.bbcode_text = dialog[phrase_num]["Texto"]
 		$NameBox/Name.bbcode_text = dialog[phrase_num]["Nombre"]
+		
+		if dialog[phrase_num]["Nombre"] == "Smol Elf":
+			$ElfPortait.show()
+			$Snowman.hide()
+		elif dialog[phrase_num]["Nombre"] == "Snomn":
+			$ElfPortait.hide()
+			$Snowman.show()
 		
 		$TextBox/Text.visible_characters = 0
 		#$NameBox/Name.visible = false

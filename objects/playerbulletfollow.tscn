@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 9.0
 
-[node name="bullet" type="RigidBody2D" groups=["bodi"]]
+[node name="bullet" type="RigidBody2D" groups=["bodi", "tracker"]]
 collision_layer = 2
 collision_mask = 8
 linear_damp = 1.0

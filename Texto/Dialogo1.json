@@ -1,10 +1,30 @@
 [
     {
-        "Texto": "Lmao u goin to fait?",
+        "Texto": "Present for mister snowman",
+        "Nombre": "Smol Elf"
+    },
+    {
+        "Texto": "Omg they sent bomb???",
         "Nombre": "Snomn"
     },
     {
-        "Texto": "U dnt evn stant a chance",
+        "Texto": "Sir this is not a bomb",
+        "Nombre": "Smol Elf"
+    },
+    {
+        "Texto": "O yea this bomb no present please",
+        "Nombre": "Snomn"
+    },
+    {
+        "Texto": "Sir this is a present from Santa",
+        "Nombre": "Smol Elf"
+    },
+    {
+        "Texto": "Please take it so I can leave",
+        "Nombre": "Smol Elf"
+    },
+    {
+        "Texto": "Make me",
         "Nombre": "Snomn"
     }
 ]

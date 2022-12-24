@@ -30,6 +30,7 @@ func _ready():
 func _process(delta):
 	if changing_path:
 		var vector = (destination - self.position).normalized()
+# warning-ignore:return_value_discarded
 		move_and_slide(vector * speed)
 	
 	if fase == 3:

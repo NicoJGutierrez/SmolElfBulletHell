@@ -7,6 +7,8 @@ var reload_time = 1/rate_of_fire
 export var max_angulo = 7.5
 var angulo = max_angulo
 
+export var movible = true
+
 var shooter : Node2D
 export(PackedScene) var bullet_scene = preload("res://objects/bullet.tscn")
 
@@ -43,10 +45,20 @@ func _process(delta):
 		angulo = max_angulo
 	
 # warning-ignore:unused_variable
-	var detector_de_colisiones = move_and_slide(motion * movespeed)
+	if movible:
+# warning-ignore:return_value_discarded
+		move_and_slide(motion * movespeed)
+	else:
+		var detector = move_and_slide(Vector2(0, 1) * movespeed)
+		if detector != null:
+			var trackers = get_tree().get_nodes_in_group("tracker")
+			for tracker in trackers:
+				tracker.queue_free()
+			# warning-ignore:return_value_discarded
+			get_tree().change_scene("res://scenes/Ending.tscn")
 	
 	reload_time -= delta
-	if reload_time <= 0:
+	if reload_time <= 0 and movible:
 		shooter.shoot_to_tree(1000, 3, bullet_scene, 90 + 180 - angulo, Vector2(-20,0))
 		shooter.shoot_to_tree(1000, 3, bullet_scene, 90 + 180)
 		shooter.shoot_to_tree(1000, 3, bullet_scene, 90 + 180 + angulo, Vector2(20, 0))
@@ -58,6 +70,8 @@ func _process(delta):
 
 
 func _on_Area2D_body_entered(body):
+	if not movible:
+		return
 	BossLair.camera_shake()
 	body.queue_free()
 	$AudioStreamPlayer.play()

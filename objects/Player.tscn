@@ -7,7 +7,7 @@
 [ext_resource path="res://images/WhiteCircle.png" type="Texture" id=5]
 [ext_resource path="res://objects/playerbullet.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/playerbulletfollow.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Hit_Hurt5.wav" type="AudioStream" id=8]
+[ext_resource path="res://music/Hit_Hurt5.wav" type="AudioStream" id=8]
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 2.0

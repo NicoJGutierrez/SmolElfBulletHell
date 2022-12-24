@@ -59,7 +59,8 @@ func _process(delta):
 		phase_3()
 	if boss.life < 30 and boss.fase == 3:
 		phase_4()
-	
+	if boss.life < 0.5 and boss.fase == 4:
+		boss_ded()
 	
 	if boss.fase == 4:
 		if angulo >= 90:
@@ -75,7 +76,7 @@ func _process(delta):
 				shapechanger = false
 			else:
 				shapechanger = true
-			for i in range(hail_qtty):
+			for _i in range(hail_qtty):
 				if shapechanger:
 					$Shooter.shoot_child(250, 25, bullet_scene, 90 - mini_angulo)
 					$Container2/Shooter2.shoot_child(250, 25, bullet_scene, 90 + mini_angulo)
@@ -128,3 +129,8 @@ func phase_4():
 	boss.play_phase_change()
 	boss.fase = 4
 	chatbox.new_dialog("Texto/Dialogo4.json")
+
+func boss_ded():
+	boss.fase = 5
+	chatbox.new_dialog("Texto/Dialogo5.json")
+	get_node("../Player").movible = false

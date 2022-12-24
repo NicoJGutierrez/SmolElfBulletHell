@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://snowmantheme.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://images/ending1.png" type="Texture" id=3]
+[ext_resource path="res://images/ConceptElf.png" type="Texture" id=4]
+[ext_resource path="res://fonts/LibreBaskerville-Bold.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 5 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1024.0
+margin_bottom = -1024.0
+script = ExtResource( 2 )
+
+[node name="Ending1" type="Sprite" parent="."]
+position = Vector2( 481, 617 )
+scale = Vector2( 1.20313, 1.20313 )
+texture = ExtResource( 3 )
+
+[node name="BackToMenu" type="Button" parent="."]
+margin_left = 317.0
+margin_top = 493.0
+margin_right = 768.0
+margin_bottom = 604.0
+theme = ExtResource( 1 )
+text = "Back to menu"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 863, 684 )
+scale = Vector2( 0.142145, 0.142145 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 35.0
+margin_top = 75.0
+margin_right = 875.0
+margin_bottom = 193.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Present for mr snowman"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Label"]
+margin_left = 28.0
+margin_top = 118.0
+margin_right = 822.0
+margin_bottom = 332.0
+theme = ExtResource( 1 )
+text = "Game by ElLimitador for secret santa jam
+Art by Gatoqueque
+Music by The Cynic Project
+Special thanks to Ginxu and Alvamajo"
+
+[connection signal="pressed" from="BackToMenu" to="." method="_on_BackToMenu_pressed"]
