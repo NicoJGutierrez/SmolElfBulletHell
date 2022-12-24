@@ -15,6 +15,7 @@ run/main_scene="res://scenes/MainMenu.tscn"
 config/use_hidden_project_data_directory=false
 boot_splash/image="res://images/ending1.png"
 config/icon="res://images/ending1.png"
+config/windows_native_icon="res://scenes/favicon.ico"
 
 [debug]
 
