@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/music_jewels.ogg-9e7fa781db28f5c31a833aa5019f140b.oggstr"
+path="res://import/music_jewels.ogg-9e7fa781db28f5c31a833aa5019f140b.oggstr"
 
 [deps]
 
 source_file="res://music/music_jewels.ogg"
-dest_files=[ "res://.import/music_jewels.ogg-9e7fa781db28f5c31a833aa5019f140b.oggstr" ]
+dest_files=[ "res://import/music_jewels.ogg-9e7fa781db28f5c31a833aa5019f140b.oggstr" ]
 
 [params]
 

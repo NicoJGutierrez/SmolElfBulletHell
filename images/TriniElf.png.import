@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/TriniElf.png-43a81fe52539e2b2ceaa234f1b25ee0f.stex"
+path="res://import/TriniElf.png-43a81fe52539e2b2ceaa234f1b25ee0f.stex"
 metadata={
 "vram_texture": false
 }
@@ -10,7 +10,7 @@ metadata={
 [deps]
 
 source_file="res://images/TriniElf.png"
-dest_files=[ "res://.import/TriniElf.png-43a81fe52539e2b2ceaa234f1b25ee0f.stex" ]
+dest_files=[ "res://import/TriniElf.png-43a81fe52539e2b2ceaa234f1b25ee0f.stex" ]
 
 [params]
 

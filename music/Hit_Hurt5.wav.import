@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Hit_Hurt5.wav-3e6af5965b363ee9d66e2c1267099ee3.sample"
+path="res://import/Hit_Hurt5.wav-3e6af5965b363ee9d66e2c1267099ee3.sample"
 
 [deps]
 
 source_file="res://music/Hit_Hurt5.wav"
-dest_files=[ "res://.import/Hit_Hurt5.wav-3e6af5965b363ee9d66e2c1267099ee3.sample" ]
+dest_files=[ "res://import/Hit_Hurt5.wav-3e6af5965b363ee9d66e2c1267099ee3.sample" ]
 
 [params]
 

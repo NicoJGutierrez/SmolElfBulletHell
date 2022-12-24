@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/BBB.wav-d590928b9931d6777f3342c00bd6ba05.sample"
+path="res://import/BBB.wav-d590928b9931d6777f3342c00bd6ba05.sample"
 
 [deps]
 
 source_file="res://music/BBB.wav"
-dest_files=[ "res://.import/BBB.wav-d590928b9931d6777f3342c00bd6ba05.sample" ]
+dest_files=[ "res://import/BBB.wav-d590928b9931d6777f3342c00bd6ba05.sample" ]
 
 [params]
 

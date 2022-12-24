@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/BossPhase.wav-5077752fc02b3ce0a0a9f94303dfd430.sample"
+path="res://import/BossPhase.wav-5077752fc02b3ce0a0a9f94303dfd430.sample"
 
 [deps]
 
 source_file="res://music/BossPhase.wav"
-dest_files=[ "res://.import/BossPhase.wav-5077752fc02b3ce0a0a9f94303dfd430.sample" ]
+dest_files=[ "res://import/BossPhase.wav-5077752fc02b3ce0a0a9f94303dfd430.sample" ]
 
 [params]
 

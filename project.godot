@@ -10,10 +10,11 @@ config_version=4
 
 [application]
 
-config/name="SmolElfGoesToHell"
-run/main_scene="res://scenes/TestScene.tscn"
-boot_splash/image="res://images/snowman portait.png"
-config/icon="res://images/snowman portait.png"
+config/name="Present For Mr Snowman"
+run/main_scene="res://scenes/MainMenu.tscn"
+config/use_hidden_project_data_directory=false
+boot_splash/image="res://images/ending1.png"
+config/icon="res://images/ending1.png"
 
 [debug]
 
